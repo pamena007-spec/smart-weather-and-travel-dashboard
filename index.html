@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Smart Weather & Travel Dashboard - live weather, 7-day forecast and travel suggestions." />
+  <title>Smart Weather &amp; Travel Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Smart Weather &amp; Travel Dashboard</h1>
+      <p>Check the weather and get travel suggestions for any city.</p>
+    </header>
+
+    <!-- Search -->
+    <section class="search-section" aria-label="City search">
+      <form id="search-form" class="search-form" novalidate>
+        <label for="city-input" class="visually-hidden">City name</label>
+        <input type="text" id="city-input" placeholder="Enter a city, e.g. Paris" autocomplete="off" />
+        <button type="submit" id="search-btn">Search</button>
+      </form>
+      <p id="loading" class="status loading hidden" role="status">Loading weather data...</p>
+      <p id="error" class="status error hidden" role="alert"></p>
+    </section>
+
+    <div id="dashboard" class="dashboard hidden">
+      <!-- Current weather -->
+      <section class="card current-card" aria-label="Current weather">
+        <div class="current-top">
+          <div id="weather-icon" class="weather-icon" aria-hidden="true">☀️</div>
+          <div class="place">
+            <h2 id="city-name">City</h2>
+            <p id="country" class="muted">Country</p>
+            <p id="date-time" class="muted small">--</p>
+          </div>
+          <div class="temp-block">
+            <p id="temperature" class="temperature">--°C</p>
+            <p id="condition" class="condition">--</p>
+          </div>
+        </div>
+
+        <div class="details-grid">
+          <article class="detail"><span class="detail-label">Feels like</span><span id="feels-like" class="detail-value">--</span></article>
+          <article class="detail"><span class="detail-label">Humidity</span><span id="humidity" class="detail-value">--</span></article>
+          <article class="detail"><span class="detail-label">Wind speed</span><span id="wind-speed" class="detail-value">--</span></article>
+          <article class="detail"><span class="detail-label">Wind direction</span><span id="wind-direction" class="detail-value">--</span></article>
+          <article class="detail"><span class="detail-label">Sunrise</span><span id="sunrise" class="detail-value">--</span></article>
+          <article class="detail"><span class="detail-label">Sunset</span><span id="sunset" class="detail-value">--</span></article>
+        </div>
+      </section>
+
+      <!-- Smart travel suggestions -->
+      <section class="card travel-card" aria-label="Travel suggestions">
+        <div class="travel-head">
+          <h2>Travel suggestions</h2>
+          <span id="travel-rating" class="rating">--</span>
+        </div>
+        <p id="travel-message" class="travel-message">--</p>
+
+        <div class="travel-columns">
+          <div>
+            <h3>Things to do</h3>
+            <ul id="activity-list" class="tip-list"></ul>
+          </div>
+          <div>
+            <h3>What to pack</h3>
+            <ul id="packing-list" class="tip-list"></ul>
+          </div>
+        </div>
+
+        <p id="best-day" class="best-day"></p>
+      </section>
+
+      <!-- Forecast -->
+      <section class="forecast-section" aria-label="7-day forecast">
+        <h2 class="section-title">7-day forecast</h2>
+        <div id="forecast" class="forecast-grid"></div>
+      </section>
+    </div>
+
+    <footer class="app-footer">
+      <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>. Built with HTML, CSS and JavaScript.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
